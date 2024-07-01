@@ -1,5 +1,5 @@
 .btn-comp {
-  border-radius: 8px;
+  border-radius: 99px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -8,6 +8,9 @@
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.75);
 }
 .btn-comp:hover {
   border-color: #646cff;
@@ -15,4 +18,26 @@
 .btn-comp:focus,
 .btn-comp:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.btn-masuk {
+  background-color: black;
+  color: white;
+}
+
+.btn-lanjut {
+  background-color: #50b478;
+  color: white;
+}
+
+.btn-google {
+  border: 1px solid #64e2dc;
+  background-color: white;
+  color: black;
+}
+
+.btn-option {
+  border: 1px solid #64e2dc;
+  background-color: white;
+  color: #64e2dc;
 }

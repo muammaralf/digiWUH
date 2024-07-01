@@ -9,7 +9,16 @@ function App() {
 
   return (
     <>
-      <Button1 buttonName="Klik dong" />
+      <Button1 buttonName="Masuk" className="btn-masuk" />
+      <br></br>
+      <br></br>
+      <Button1 buttonName="Lanjut" className="btn-lanjut" />
+      <br></br>
+      <br></br>
+      <Button1 buttonName="Google" className="btn-google" />
+      <br></br>
+      <br></br>
+      <Button1 buttonName="Pilihan" className="btn-option" />
     </>
   );
 }
