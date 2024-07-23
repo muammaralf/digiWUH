@@ -1,0 +1,22 @@
+.card-container {
+  padding: 12px;
+  background-color: white;
+  outline: 1px;
+  width: 320px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.6);
+  color: black;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.harga-like {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,14 @@
+.form-label {
+  font-weight: 550;
+  font-size: smaller;
+}
+
+.form-inp {
+  width: 340px;
+  height: 28px;
+  font-size: small;
+  border-radius: 9999px;
+  border: 1px solid #50b478;
+  box-sizing: border-box;
+  padding: 8px;
+}

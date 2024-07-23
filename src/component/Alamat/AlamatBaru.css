@@ -1,0 +1,20 @@
+.alamat-baru {
+  width: 336px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.alamat-baru label {
+  font-weight: 550;
+}
+
+.dropdown-content {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.dropdown-content option {
+  text-align: end;
+}

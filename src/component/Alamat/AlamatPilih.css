@@ -1,0 +1,22 @@
+.alamat-pilih-container {
+  width: 362px;
+}
+
+.border-bottom {
+  width: 362px;
+  border-bottom: 1px solid black;
+}
+
+/* td {
+  border-bottom: 1px solid black;
+} */
+
+.edit-btn {
+  text-align: end;
+}
+
+.edit-alamat-btn {
+  background-color: rgba(255, 255, 255, 0);
+  color: #ff0000;
+  border: none;
+}
