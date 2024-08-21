@@ -1,21 +1,41 @@
 import React, { useState } from "react";
 import "./Cards.css";
-import squidward from "../../assets/squidward.jpg";
 
 const Cards = (props) => {
-  const { classNameCont, classNameImg, classNameText, imgCard, txtCard } =
-    props;
+  const {
+    classNameCont,
+    classNameImg,
+    classNameText,
+    img,
+    txtCard,
+    harga,
+    children,
+  } = props;
   return (
-    <div className="card-container">
+    <div
+      id="cardContainer"
+      className={
+        classNameCont
+          ? `${classNameCont} p-3 bg-white outline-1 rounded-xl`
+          : `p-3 bg-white outline-1 rounded-xl`
+      }
+    >
       <div className="card-img">
-        <img src={squidward} alt="" />
+        <img
+          src={img}
+          alt=""
+          className={
+            classNameImg
+              ? `${classNameImg} rounded-lg object-cover`
+              : `object-cover h-20 rounded-lg`
+          }
+        />
       </div>
-      <div className="card-text">
-        <p>Nama</p>
-        <div className="harga-like">
-          <div>Harga</div>
-          <div>Like</div>
-        </div>
+      <div className="">
+        <p className="font-semibold text-sm">
+          Pengertian Biopori dan Manfaatnya
+        </p>
+        {children}
       </div>
     </div>
   );

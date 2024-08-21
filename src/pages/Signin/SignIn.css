@@ -1,5 +1,5 @@
 .signin-container {
-  width: 432px;
+  width: 100vw;
   height: 100vh;
   background-color: #50b478;
   font-weight: 500;
@@ -45,7 +45,7 @@
 .form-container {
   position: absolute;
   bottom: 0;
-  width: 432px;
+  width: 100%;
   background-color: #e1f5fb;
   bottom: 0;
   height: 68%;
@@ -55,4 +55,10 @@
   justify-content: center;
   border-radius: 16px 16px 0 0;
   color: #000000;
+}
+
+.submit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

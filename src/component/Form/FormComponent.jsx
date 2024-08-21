@@ -5,7 +5,7 @@ const FormComponent = (props) => {
   const { FormLabel, FormType, FormName, FormID, FormPlacehldr } = props;
   return (
     <>
-      <p className="form-label">{FormLabel}</p>
+      <p className="form-label mt-3 text-sm">{FormLabel}</p>
       <input
         type={FormType ? FormType : "text"}
         name={FormName}
