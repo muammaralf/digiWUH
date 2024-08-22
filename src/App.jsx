@@ -22,13 +22,15 @@ import ArtikelList from "./pages/ArtikelList/ArtikelList";
 import TextCards from "./component/TextCards/TextCards";
 import Biopori2 from "./assets/img/Biopori2.png";
 import ArtikelPage from "./pages/ArtikelPage/ArtikelPage";
+import Profil from "./pages/Profil/Profil";
+import ProfilDetailBtn from "./component/ProfilComp/ProfilDetailBtn";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Router>
+      {/* <Router>
         <Routes>
           <Route path="/digiWUH" element={<SignIn />} />
           <Route
@@ -54,7 +56,10 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </Router> */}
+      <Profil>
+        <ProfilDetailBtn />
+      </Profil>
     </>
   );
 }
