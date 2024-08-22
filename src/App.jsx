@@ -22,6 +22,11 @@ import ArtikelList from "./pages/ArtikelList/ArtikelList";
 import TextCards from "./component/TextCards/TextCards";
 import Biopori2 from "./assets/img/Biopori2.png";
 import ArtikelPage from "./pages/ArtikelPage/ArtikelPage";
+import Acara from "./pages/Acara/Acara";
+import BeliProduk from "./pages/Store/BeliProduk";
+import Confirm from "./pages/Store/Confirm";
+import KonfirmasiBerhasil from "./pages/Store/KonfirmasiBerhasil";
+import Intro from "./pages/Signin/Intro";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,6 +36,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/digiWUH" element={<SignIn />} />
+
           <Route
             path="/digiWUH/home"
             element={
@@ -39,20 +45,33 @@ function App() {
               </HomePage>
             }
           />
+
           <Route path="/digiWUH/artikel" element={<ArtikelPage />} />
+
           <Route
             path="/digiWUH/artikellist"
             element={
               <ArtikelList>
                 <Cards img={Biopori2} classNameImg="h-52">
                   <TextCards
-                    headLine="ernahkah kalian mendengar istilah biopori? Biopori adalah
+                    headLine="Pernahkah kalian mendengar istilah biopori? Biopori adalah
                 istilah yang digunakan untuk mendeskripsikan lubang resapan."
                   />
                 </Cards>
               </ArtikelList>
             }
           />
+
+          {/* joki dimulai dari route di bawah ini */}
+          <Route path="/digiWUH/acara" element={<Acara />} />
+
+          <Route path="/digiWUH/beli-produk" element={<BeliProduk />} />
+
+          <Route path="/digiWUH/konfirmasi" element={<Confirm />} />
+          
+          <Route path="/digiWUH/konfirmasi-berhasil" element={<KonfirmasiBerhasil />} />
+
+          <Route path="/digiWUH/intro" element={<Intro />} />
         </Routes>
       </Router>
     </>
