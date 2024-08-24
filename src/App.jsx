@@ -22,17 +22,32 @@ import ArtikelList from "./pages/ArtikelList/ArtikelList";
 import TextCards from "./component/TextCards/TextCards";
 import Biopori2 from "./assets/img/Biopori2.png";
 import ArtikelPage from "./pages/ArtikelPage/ArtikelPage";
+
 import Profil from "./pages/Profil/Profil";
 import ProfilDetailBtn from "./component/ProfilComp/ProfilDetailBtn";
+import Acara from "./pages/Acara/Acara";
+import BeliProduk from "./pages/Store/BeliProduk";
+import Confirm from "./pages/Store/Confirm";
+import KonfirmasiBerhasil from "./pages/Store/KonfirmasiBerhasil";
+import Intro from "./pages/Signin/Intro";
+import ProfilTtg from "./component/ProfilComp/ProfilTtg";
+import AkunSaya from "./pages/Profil/AkunSaya";
+import Riwayat from "./pages/Riwayat/Riwayat";
+import DetailAcara from "./pages/Acara/DetailAcara";
+import Video from "./pages/Video/Video";
+import Game from "./pages/Game/Game";
+import AlertGame from "./component/Alert/AlertGame";
+import { artikel as artk } from "./data/Artikeldata";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      {/* <Router>
+      <Router>
         <Routes>
           <Route path="/digiWUH" element={<SignIn />} />
+
           <Route
             path="/digiWUH/home"
             element={
@@ -41,25 +56,39 @@ function App() {
               </HomePage>
             }
           />
+
           <Route path="/digiWUH/artikel" element={<ArtikelPage />} />
+
           <Route
-            path="/digiWUH/artikellist"
+            path="/digiWUH/artikel-list"
             element={
               <ArtikelList>
-                <Cards img={Biopori2} classNameImg="h-52">
-                  <TextCards
-                    headLine="ernahkah kalian mendengar istilah biopori? Biopori adalah
-                istilah yang digunakan untuk mendeskripsikan lubang resapan."
-                  />
-                </Cards>
+                <Cards img={Biopori2} classNameImg="h-52" />
               </ArtikelList>
             }
           />
+
+          {/* joki dimulai dari route di bawah ini */}
+          <Route path="/digiWUH/acara" element={<Acara />} />
+
+          <Route path="/digiWUH/beli-produk" element={<BeliProduk />} />
+
+          <Route path="/digiWUH/konfirmasi" element={<Confirm />} />
+
+          <Route
+            path="/digiWUH/konfirmasi-berhasil"
+            element={<KonfirmasiBerhasil />}
+          />
+
+          <Route path="/digiWUH/intro" element={<Intro />} />
+
+          <Route path="/digiWUH/game" element={<Game />} />
+          <Route path="/digiWUH/video" element={<Video />} />
+          <Route path="/digiWUH/profil" element={<Profil />} />
+          <Route path="/digiWUH/akun" element={<AkunSaya />} />
+          <Route path="/digiWUH/daftar" element={<Regist />} />
         </Routes>
-      </Router> */}
-      <Profil>
-        <ProfilDetailBtn />
-      </Profil>
+      </Router>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Cards.css";
+import TextCards from "../TextCards/TextCards";
 
 const Cards = (props) => {
   const {
@@ -32,7 +33,7 @@ const Cards = (props) => {
         />
       </div>
       <div className="">
-        <p className="font-semibold text-sm">
+        <p className="font-semibold text-sm text-start">
           Pengertian Biopori dan Manfaatnya
         </p>
         {children}

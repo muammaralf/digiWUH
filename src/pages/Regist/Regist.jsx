@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import "./SignIn.css";
 import FormComponent from "../../component/Form/FormComponent";
 import { formRegist } from "../../data/FormData";
 import vector1 from "../../assets/img/Vector1.svg";
 import Button1 from "../../component/Button/Button1";
 import google from "../../assets/img/google.svg";
+import { useNavigate } from "react-router-dom";
 
 const Regist = () => {
   return (
@@ -57,9 +58,9 @@ const Regist = () => {
             </form>
             <p className="font-semibold text-center text-sm mt-2">
               Sudah punya akun?{" "}
-              <a href="#" className="font-bold text-[#50b478] underline">
+              <button className="font-bold text-[#50b478] underline">
                 Masuk
-              </a>
+              </button>
             </p>
           </div>
         </div>

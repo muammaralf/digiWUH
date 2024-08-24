@@ -1,7 +1,9 @@
 import React from "react";
 import fotprof from "../../assets/img/profilcowok.png";
+import { useNavigate } from "react-router-dom";
 
 const ProfilDetailBtn = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#50B478] mx-4 h-16 rounded-lg py-3 px-4 flex text-white gap-3">
       <div
@@ -10,8 +12,8 @@ const ProfilDetailBtn = () => {
       >
         <img src={fotprof} alt="" className="m-auto h-9 w-9" />
       </div>
-      <div id="nama" className=" grow text-sm font-medium">
-        <p id="nama" className="">
+      <div id="text" className=" grow text-sm font-medium">
+        <p id="text" className="">
           Ali
         </p>
         <p id="noHP" className="">
@@ -19,7 +21,7 @@ const ProfilDetailBtn = () => {
         </p>
       </div>
       <div id="arrowNext" className=" flex-none my-auto">
-        <button>
+        <button onClick={() => navigate("/digiWUH/akun")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

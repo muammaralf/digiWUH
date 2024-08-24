@@ -1,6 +1,8 @@
 import React from "react";
 import Biopori2 from "../../assets/img/Biopori2.png";
 import HijabGirl from "../../assets/img/HijabGirl.svg";
+import BackButton from "../../component/BackButton";
+import { artikel } from "../../data/Artikeldata";
 
 const ArtikelPage = () => {
   return (
@@ -8,7 +10,7 @@ const ArtikelPage = () => {
       <div className="h-screen pt-6 bg-white">
         <div className=" absolute h-16 w-full top-0 bg-[#e1f5fb]"></div>
         <div id="isiKonten" className="absolute px-6">
-          <div className="sm:ml-4 md:ml-8 lg:ml-12 xl:ml-16">
+          {/* <div className="sm:ml-4 md:ml-8 lg:ml-12 xl:ml-16">
             <div className=" text-xl font-semibold flex w-50 sm:w-52 sm:text-2xl md:w-64 md:text-3xl">
               <a href="#">
                 <svg
@@ -23,7 +25,8 @@ const ArtikelPage = () => {
               </a>
               <p className="">Artikel </p>
             </div>
-          </div>
+          </div> */}
+          <BackButton text="Artikel" />
         </div>
         <div id="artikelCont" className="">
           <img src={Biopori2} alt="" className=" mt-2" />

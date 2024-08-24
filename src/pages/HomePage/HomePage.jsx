@@ -8,6 +8,7 @@ import Cards from "../../component/Cards/Cards";
 import { jadwal } from "../../data/Jadwal";
 import { edukasi } from "../../data/Edukasi";
 import Biopori2 from "../../assets/img/Biopori2.png";
+import { artikel as artk } from "../../data/Artikeldata";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = ({ children }) => {
@@ -84,6 +85,7 @@ const HomePage = ({ children }) => {
                     bgout={edukasi.bgout}
                     bgicon={edukasi.bgicon}
                     nameEdukasi={edukasi.nameEdukasi}
+                    linkBtn={edukasi.linkBtn}
                   />
                 );
               })}
@@ -94,17 +96,24 @@ const HomePage = ({ children }) => {
               <p id="ArtikelText" className="font-semibold text-xl w-80">
                 Artikel
               </p>
-              <a
-                href="/digiWUH/artikellist"
+              <button
+                onClick={() => navigate("/digiWUH/artikel-list")}
                 className="text-sm text-blue-600 hover:text-blue-700"
               >
                 Selengkapnya
-              </a>
+              </button>
             </div>
             <div className="">
-              <a href="/digiWUH/artikel" className="grid grid-cols-2 gap-4">
-                <Cards img={Biopori2} />
-              </a>
+              {artk.map((artk) => {
+                return (
+                  <button
+                    onClick={() => navigate(artk.linkBtn)}
+                    className="grid grid-cols-2 gap-4"
+                  >
+                    <Cards img={artk.img} />
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

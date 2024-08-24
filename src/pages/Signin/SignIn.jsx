@@ -61,9 +61,12 @@ const SignIn = () => {
             </form>
             <p className="font-semibold text-center text-sm mt-2">
               Belum punya akun?{" "}
-              <a href="#" className="font-bold text-[#50b478] underline">
+              <button
+                onClick={() => navigate("/digiWUH/daftar")}
+                className="font-bold text-[#50b478] underline"
+              >
                 Daftar
-              </a>
+              </button>
             </p>
             <p className="font-semibold text-center text-sm mt-2">Atau</p>
             <div className="google-button-container flex flex-col">

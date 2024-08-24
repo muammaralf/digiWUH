@@ -1,11 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="fixed mx-auto w-full h-20 bottom-0 rounded-t-[48px] overflow-hidden bg-slate-500"></div>
       <div className="fixed w-full flex justify-center h-[76px] bottom-0 rounded-t-[48px] bg-white">
-        <a href="#" className="group flex items-center h-full">
+        <button
+          onClick={() => navigate("/digiWUH/home")}
+          className="group flex items-center h-full"
+        >
           <div
             id="home"
             className="absolute flex flex-col left-14 w-24 cursor-pointer"
@@ -27,8 +32,11 @@ const Navbar = () => {
               Beranda
             </p>
           </div>
-        </a>
-        <a href="#" className="absolute flex justify-center group">
+        </button>
+        <button
+          onClick={() => navigate("/digiWUH/beli-produk")}
+          className="absolute flex justify-center group"
+        >
           <div
             id="digistore"
             className="absolute -mt-12 flex w-24 h-24 rounded-full shadow-md bg-[#e1f5fb] cursor-pointer"
@@ -49,8 +57,11 @@ const Navbar = () => {
               </svg>
             </div>
           </div>
-        </a>
-        <a href="#" className="group h-full flex items-center">
+        </button>
+        <button
+          onClick={() => navigate("/digiWUH/profil")}
+          className="group h-full flex items-center"
+        >
           <div
             id="profil"
             className="absolute flex flex-col right-14 w-24 cursor-pointer"
@@ -72,7 +83,7 @@ const Navbar = () => {
               Profil
             </p>
           </div>
-        </a>
+        </button>
       </div>
     </>
   );

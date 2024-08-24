@@ -1,15 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Edukasi = (props) => {
-  const { icon, bgout, bgicon, nameEdukasi } = props;
+  const navigate = useNavigate();
+  const { icon, bgout, bgicon, nameEdukasi, linkBtn } = props;
   return (
     <>
-      <div
-        className={
-          bgout
-            ? `rounded-lg ${bgout} p-3 shadow-md`
-            : "rounded-lg bg-lime-500 p-3 shadow-md"
-        }
+      <button
+        onClick={() => navigate(linkBtn)}
+        className={`${bgout} w-full p-2 rounded-lg`}
       >
         <div className="flex flex-col">
           <div
@@ -24,7 +23,7 @@ const Edukasi = (props) => {
             {nameEdukasi ? nameEdukasi : "Segera Hadir"}
           </p>
         </div>
-      </div>
+      </button>
     </>
   );
 };
