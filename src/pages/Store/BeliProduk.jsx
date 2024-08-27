@@ -21,9 +21,9 @@ const BeliProduk = () => {
         </div>
         <div className="container pt-6 pb-36 px-6 flex flex-col gap-6">
           <div className="w-full flex flex-col gap-5">
-            {dataProduk.map((produk) => (
-              <Card data={produk} />
-            ))}
+            {dataProduk.map((produk) => {
+              return <Card data={produk} />;
+            })}
           </div>
 
           <div className="flex flex-col gap-5 ">
