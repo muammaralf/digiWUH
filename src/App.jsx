@@ -38,6 +38,7 @@ import Video from "./pages/Video/Video";
 import Game from "./pages/Game/Game";
 import AlertGame from "./component/Alert/AlertGame";
 import { artikel as artk } from "./data/Artikeldata";
+import DemoEndpoint from './pages/DemoEndpoint/DemoEndpoint';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -87,6 +88,9 @@ function App() {
           <Route path="/digiWUH/profil" element={<Profil />} />
           <Route path="/digiWUH/akun" element={<AkunSaya />} />
           <Route path="/digiWUH/daftar" element={<Regist />} />
+
+          {/* Demo */}
+          <Route path="/digiWUH/demo-endpoint" element={<DemoEndpoint />} />
         </Routes>
       </Router>
     </>
