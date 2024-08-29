@@ -1,9 +1,13 @@
 import React from "react";
 import fotprof from "../../assets/img/profilcowok.png";
 import { useNavigate } from "react-router-dom";
+import useUserStore from "../../store/user.store";
 
 const ProfilDetailBtn = () => {
   const navigate = useNavigate();
+
+  const { user } = useUserStore()
+
   return (
     <div className="bg-[#50B478] mx-4 h-16 rounded-lg py-3 px-4 flex text-white gap-3">
       <div
@@ -14,14 +18,14 @@ const ProfilDetailBtn = () => {
       </div>
       <div id="text" className=" grow text-sm font-medium">
         <p id="text" className="">
-          Ali
+          {user?.userMetadata.fullname}
         </p>
         <p id="noHP" className="">
-          081234567890
+          {user?.userMetadata.phoneNumber}
         </p>
       </div>
       <div id="arrowNext" className=" flex-none my-auto">
-        <button onClick={() => navigate("/digiWUH/akun")}>
+        <button onClick={() => navigate("/akun")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

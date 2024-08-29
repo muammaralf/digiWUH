@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="fixed mx-auto w-full h-20 bottom-0 rounded-t-[48px] overflow-hidden bg-slate-500"></div>
       <div className="fixed w-full flex justify-center h-[76px] bottom-0 rounded-t-[48px] bg-white">
         <button
-          onClick={() => navigate("/digiWUH/home")}
+          onClick={() => navigate("/home")}
           className="group flex items-center h-full"
         >
           <div
@@ -34,7 +34,7 @@ const Navbar = () => {
           </div>
         </button>
         <button
-          onClick={() => navigate("/digiWUH/beli-produk")}
+          onClick={() => navigate("/beli-produk")}
           className="absolute flex justify-center group"
         >
           <div
@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
         </button>
         <button
-          onClick={() => navigate("/digiWUH/profil")}
+          onClick={() => navigate("/profil")}
           className="group h-full flex items-center"
         >
           <div

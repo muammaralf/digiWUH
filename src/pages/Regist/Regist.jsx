@@ -1,13 +1,62 @@
-import React, { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 // import "./SignIn.css";
 import FormComponent from "../../component/Form/FormComponent";
 import { formRegist } from "../../data/FormData";
 import vector1 from "../../assets/img/Vector1.svg";
 import Button1 from "../../component/Button/Button1";
 import google from "../../assets/img/google.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import instance from "../../services/axios/instance";
+import {toast} from "react-toastify";
+import useUserStore from "../../store/user.store.js";
 
 const Regist = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const {user} = useUserStore()
+
+  useEffect(() => {
+    if (user) {
+      navigate('/home')
+    }
+  }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    try {
+      const formdata = new FormData(e.target)
+      const payload = Object.fromEntries(formdata.entries())
+
+      if (payload.password2 !== payload.password) {
+        toast.error('Password tidak sama')
+        return
+      }
+
+      const { data } = await instance.post('/register', {
+        fullname: payload.fullname,
+        email: payload.email,
+        phoneNumber: payload.phoneNumber,
+        password: payload.password,
+      })
+
+      if (!data.success) {
+        toast.error(data.message)
+        return
+      }
+
+      toast.success('Berhasil mendaftar')
+      navigate('/masuk')
+    } catch (e) {
+      console.log(e)
+      toast.error(e.response?.data?.message?.message || 'Error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <>
       <div className="w-screen h-screen bg-[#50b478] font-bold border-box text-white">
@@ -40,7 +89,7 @@ const Regist = () => {
             <p className="font-bold text-2xl text-center mb-4 sm:text-3xl md:text-4xl">
               Daftar
             </p>
-            <form action="submit" className="flex flex-col justify-center">
+            <form action="submit" className="flex flex-col justify-center" onSubmit={handleSubmit}>
               {formRegist.map((regist) => {
                 return (
                   <FormComponent
@@ -54,13 +103,13 @@ const Regist = () => {
                 );
               })}
 
-              <Button1 buttonName="Daftar" classN="btn-lanjut" />
+              <Button1 type="submit" buttonName="Daftar" classN="btn-lanjut" />
             </form>
             <p className="font-semibold text-center text-sm mt-2">
               Sudah punya akun?{" "}
-              <button className="font-bold text-[#50b478] underline">
+              <Link to="/masuk" className="font-bold text-[#50b478] underline">
                 Masuk
-              </button>
+              </Link>
             </p>
           </div>
         </div>

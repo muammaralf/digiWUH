@@ -1,11 +1,12 @@
-import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const BackButton = (props) => {
+  const navigate = useNavigate()
   return (
     <div
       className={`${props.clss} text-xl font-semibold flex w-50 sm:w-52 sm:text-2xl md:w-64 md:text-3xl`}
     >
-      <a href="javascript:window.history.back()">
+      <a className="hover:cursor-pointer" onClick={() => navigate(-1)}>
         <svg
           className={props.clssArrw}
           xmlns="http://www.w3.org/2000/svg"

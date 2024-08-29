@@ -5,33 +5,37 @@ import CardAcara from "../../component/Acara/Card";
 import { useEffect, useState } from "react";
 
 import dataAcara from "../../data/Acara/acara";
+import instance from "../../services/axios/instance";
 
 const Acara = () => {
-  const [event, setEvent] = useState;
+  const [event, setEvent] = useState([]);
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
-    //panggil method "fetchData"
-    fectData();
-  }, []);
+    fetchData()
+  }, [search])
 
-  //function "fetchData"
-  const fectData = async () => {
-    //fetching
-    const response = await axios.get(
-      "https://api-digiwuh-apps.mancikmania.com/events"
-    );
-    //get response data
-    const data = await response.data;
+  const fetchData = async () => {
+    try {
+      const {data} = await instance.get('/events', {
+        params: {
+          q: search,
+        }
+      })
 
-    //assign response data to state "posts"
-    setEvent(data);
+      setEvent(data.data)
+    } catch (e) {
+      console.log(e)
+      alert(e?.response?.data?.message || 'Error')
+    }
   };
+
   return (
     <div className="container">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-2 bg-[#50B478] p-6">
           <BackButton text="Acara" clss="text-white" clssArrw="fill-white" />
-          <SearchBar />
+          <SearchBar onChange={value => setSearch(value)} />
         </div>
 
         <div className="flex flex-col gap-4 mt-4 px-6 pb-6">
