@@ -1,8 +1,9 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const ProfilTtgBtn = (props) => {
-  const { textBtn, children } = props;
-  return (
+  const {textBtn, children, link} = props;
+  const el = (
     <div className=" h-16 py-3 flex w-full text-black gap-3 border-b-2">
       <div
         id="fotoProfil"
@@ -24,12 +25,22 @@ const ProfilTtgBtn = (props) => {
             width="24px"
             fill="#000000"
           >
-            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
           </svg>
         </button>
       </div>
     </div>
   );
+
+  if (link) {
+    return (
+      <Link to={link}>
+        {el}
+      </Link>
+    )
+  }
+
+  return el
 };
 
 export default ProfilTtgBtn;

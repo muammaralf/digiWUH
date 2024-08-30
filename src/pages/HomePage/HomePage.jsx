@@ -1,18 +1,48 @@
-import React from "react";
-import Navbar from "../../component/Navbar/Navbar";
+import React, {useEffect, useState} from "react";
 import digiwuhLogo from "../../assets/img/digiwuhLogo.svg";
 import profilFoto from "../../assets/img/ProfilFoto.svg";
 import JadwalSetor from "../../component/JadwalSetor/JadwalSetor";
 import Edukasi from "../../component/Edukasi/Edukasi";
-import Cards from "../../component/Cards/Cards";
-import { jadwal } from "../../data/Jadwal";
 import { edukasi } from "../../data/Edukasi";
-import Biopori2 from "../../assets/img/Biopori2.png";
-import { artikel as artk } from "../../data/Artikeldata";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import useUserStore from "../../store/user.store";
+import ArtikelListHome from "../ArtikelList/ArtikelListHome.jsx";
+import instance from "../../services/axios/instance.js";
+
+const scheduleColors = [
+  'bg-pink-600',
+  'bg-green-500',
+  'bg-yellow-500',
+]
 
 const HomePage = ({ children }) => {
   const navigate = useNavigate();
+
+  const [schedules, setSchedules] = useState([])
+
+  const {user} = useUserStore()
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const {data} = await instance.get('/schedules', {
+        params: {
+          perPage: 9999,
+          page: 1,
+        }
+      })
+
+      setSchedules(data.data)
+    } catch (e) {
+
+    } finally {
+
+    }
+  }
+
   return (
     <>
       <div className="">
@@ -43,8 +73,7 @@ const HomePage = ({ children }) => {
         >
           <div className="flex justify-between mt-2 w-full">
             <div className="my-auto">
-              <p className="font-semibold text-xl">Halo, Ali!</p>
-              {/* Ali nanti diganti yuppp */}
+              <p className="font-semibold text-xl">Halo, {user?.userMetadata.fullname}!</p>
               <p>Selamat datang di Digiwuh!</p>
             </div>
             <div className="h-20 flex items-center">
@@ -58,19 +87,15 @@ const HomePage = ({ children }) => {
               Penjadwalan Rumah Sampah Kalurahan Nglipar
             </p>
             <div className=" grid grid-cols-2 gap-4">
-              {jadwal.map((jadwal) => {
-                return (
-                  <>
-                    <JadwalSetor
-                      namaBS={jadwal.namaBS}
-                      tgl={jadwal.tgl}
-                      bulan={jadwal.bulan}
-                      tahun={jadwal.tahun}
-                      warna={jadwal.warna}
-                    />
-                  </>
-                );
-              })}
+              {schedules.map((schedule) => (
+                <JadwalSetor
+                  key={schedule.id}
+                  namaBS={schedule.title}
+                  lokasi={schedule.location}
+                  tgl={schedule.date}
+                  warna={scheduleColors[schedule.id % scheduleColors.length]}
+                />
+              ))}
             </div>
           </div>
           <div id="Edukasi" className="mt-2">
@@ -96,25 +121,14 @@ const HomePage = ({ children }) => {
               <p id="ArtikelText" className="font-semibold text-xl w-80">
                 Artikel
               </p>
-              <button
-                onClick={() => navigate("/digiWUH/artikel-list")}
+              <Link
+                to={`/artikel`}
                 className="text-sm text-blue-600 hover:text-blue-700"
               >
                 Selengkapnya
-              </button>
+              </Link>
             </div>
-            <div className="">
-              {artk.map((artk) => {
-                return (
-                  <button
-                    onClick={() => navigate(artk.linkBtn)}
-                    className="grid grid-cols-2 gap-4"
-                  >
-                    <Cards img={artk.img} />
-                  </button>
-                );
-              })}
-            </div>
+            <ArtikelListHome/>
           </div>
         </div>
         <div id="bottomSpace" className="h-36"></div>

@@ -12,14 +12,14 @@ const ProfilTtg = () => {
       <ProfilTtgBtn textBtn="Buku Panduan">
         <Panduan className="fill-black w-full h-full" />
       </ProfilTtgBtn>
-      <ProfilTtgBtn textBtn="Riwayat Pembelian">
+      <ProfilTtgBtn textBtn="Riwayat Pembelian" link="/profil/riwayat-pembelian">
         <FaHistory className="fill-black w-full h-full" />
       </ProfilTtgBtn>
       <p className="font-semibold pt-4">Lainnya</p>
       <ProfilTtgBtn textBtn="Bantuan">
         <FiHelpCircle className="w-full h-full" />
       </ProfilTtgBtn>
-      <ProfilTtgBtn textBtn="Keluar">
+      <ProfilTtgBtn textBtn="Keluar" link="/logout">
         <MdLogout className="w-full h-full" />
       </ProfilTtgBtn>
     </div>

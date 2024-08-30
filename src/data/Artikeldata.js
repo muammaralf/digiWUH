@@ -8,6 +8,6 @@ export const artikel = [
     hdLine:
       "Pernahkah kalian mendengar istilah biopori? Biopori adalah istilah yang digunakan untuk mendeskripsikan lubang resapan.",
 
-    linkBtn: "/digiWUH/artikel",
+    linkBtn: "/artikel",
   },
 ];

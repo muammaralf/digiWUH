@@ -1,14 +1,56 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./SignIn.css";
 import FormComponent from "../../component/Form/FormComponent";
 import { formSignin } from "../../data/FormData";
 import vector1 from "../../assets/img/Vector1.svg";
 import Button1 from "../../component/Button/Button1";
-import google from "../../assets/img/google.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import instance from "../../services/axios/instance";
+import useUserStore from "../../store/user.store";
+import {toast} from "react-toastify";
 
 const SignIn = () => {
   const navigate = useNavigate();
+
+  const {user, setUser} = useUserStore()
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (user) {
+      navigate('/home')
+    }
+  }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    setIsLoading(true)
+
+    try {
+      const formdata = new FormData(e.target)
+      const payload = Object.fromEntries(formdata.entries())
+
+      const { data } = await instance.post('/login', {
+        phoneNumber: payload.phoneNumber,
+        password: payload.password,
+      })
+
+      if (!data.success) {
+        toast.error(data.message)
+        return
+      }
+
+      setUser(data.data.user)
+      console.log(data.data.user)
+      navigate('/home')
+    } catch (e) {
+      console.log(e)
+      toast.error(e.response?.data?.message?.message || 'Error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
   return (
     <>
       <div className="w-screen h-screen bg-[#50b478] font-bold border-box text-white">
@@ -32,7 +74,7 @@ const SignIn = () => {
             <p className="font-bold text-2xl text-center mb-4 sm:text-3xl md:text-4xl">
               Masuk
             </p>
-            <form action="submit" className="flex flex-col justify-center">
+            <form action="submit" className="flex flex-col justify-center" onSubmit={handleSubmit}>
               {formSignin.map((signin) => {
                 return (
                   <FormComponent
@@ -54,19 +96,19 @@ const SignIn = () => {
                 </a>
               </div>
               <Button1
+                type="submit"
                 buttonName="Masuk"
                 classN="btn-lanjut"
-                buttonClick={() => navigate("/digiWUH/home")}
               />
             </form>
             <p className="font-semibold text-center text-sm mt-2">
               Belum punya akun?{" "}
-              <button
-                onClick={() => navigate("/digiWUH/daftar")}
+              <Link
+                to="/daftar"
                 className="font-bold text-[#50b478] underline"
               >
                 Daftar
-              </button>
+              </Link>
             </p>
             <p className="font-semibold text-center text-sm mt-2">Atau</p>
             <div className="google-button-container flex flex-col">

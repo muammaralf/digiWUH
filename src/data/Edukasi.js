@@ -5,7 +5,7 @@ export const edukasi = [
     bgout: "bg-[#2DC25F]",
     bgicon: "bg-[#00884E]",
     nameEdukasi: "Mini Game",
-    linkBtn: "/digiWUH/game",
+    linkBtn: "/game",
   },
   {
     id: "2",
@@ -13,7 +13,7 @@ export const edukasi = [
     bgout: "bg-[#4285F4]",
     bgicon: "bg-[#1355C3]",
     nameEdukasi: "Acara",
-    linkBtn: "/digiWUH/acara",
+    linkBtn: "/acara",
   },
   {
     id: "3",
@@ -21,6 +21,6 @@ export const edukasi = [
     bgout: "bg-[#F36565]",
     bgicon: "bg-[#CF4242]",
     nameEdukasi: "Video Edukasi",
-    linkBtn: "/digiWUH/video",
+    linkBtn: "/video",
   },
 ];

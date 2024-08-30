@@ -8,6 +8,7 @@ const Cards = (props) => {
     classNameImg,
     classNameText,
     img,
+    title,
     txtCard,
     harga,
     children,
@@ -34,7 +35,7 @@ const Cards = (props) => {
       </div>
       <div className="">
         <p className="font-semibold text-sm text-start">
-          Pengertian Biopori dan Manfaatnya
+          {title}
         </p>
         {children}
       </div>
