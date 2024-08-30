@@ -1,48 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const DemoEndpoint = () => {
-  const baseUrl = 'https://api-digiwuh-apps.mancikmania.com';
+  const baseUrl = "https://api-digiwuh-apps.mancikmania.com";
 
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('register');
+  const [activeTab, setActiveTab] = useState("register");
 
   // State for user registration and login
   const [userData, setUserData] = useState({
-    fullname: 'Yunanto Sodiq',
-    email: 'yunanto250@yopmail.com',
-    password: '@Yunanto123',
-    phoneNumber: '0812345678910',
+    fullname: "Yunanto Sodiq",
+    email: "yunanto250@yopmail.com",
+    password: "@Yunanto123",
+    phoneNumber: "0812345678910",
   });
 
   const [loginData, setLoginData] = useState({
-    phoneNumber: '0891323233',
-    password: '@Yunanto123',
+    phoneNumber: "0891323233",
+    password: "@Yunanto123",
   });
 
   // State for managing events
   const [eventData, setEventData] = useState({
-    title: 'Bakar Bakar bersama Mas Yun',
-    date: '2024-08-25',
-    place: 'Yogyakarta',
-    content: '<p>eeheh</p>',
-    contact: '0823423432432',
-    imageUrl: 'https://fastly.picsum.photos/id/238/200/300.jpg?grayscale&hmac=yy_l-6HLPsW8jO7SRZwx9go2ngMplWE-DzR26yiVPUc',
+    title: "Bakar Bakar bersama Mas Yun",
+    date: "2024-08-25",
+    place: "Yogyakarta",
+    content: "<p>eeheh</p>",
+    contact: "0823423432432",
+    imageUrl:
+      "https://fastly.picsum.photos/id/238/200/300.jpg?grayscale&hmac=yy_l-6HLPsW8jO7SRZwx9go2ngMplWE-DzR26yiVPUc",
   });
 
   const [events, setEvents] = useState([]);
   const [editingEvent, setEditingEvent] = useState(null);
 
   useEffect(() => {
-    if (activeTab === 'manageEvent') {
+    if (activeTab === "manageEvent") {
       fetchEvents();
     }
   }, [activeTab]);
 
   const handleInputChange = (e, setData) => {
     const { name, value } = e.target;
-    setData(prevData => ({ ...prevData, [name]: value }));
+    setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleTabChange = (tab) => {
@@ -50,7 +51,7 @@ const DemoEndpoint = () => {
     setActiveTab(tab);
   };
 
-  const fetchData = async (url, method = 'GET', body = null) => {
+  const fetchData = async (url, method = "GET", body = null) => {
     setLoading(true);
     setError(null);
     setResponse(null);
@@ -59,7 +60,7 @@ const DemoEndpoint = () => {
       const options = {
         method,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       };
       if (body) options.body = JSON.stringify(body);
@@ -76,8 +77,8 @@ const DemoEndpoint = () => {
     }
   };
 
-  const registerUser = () => fetchData(`${baseUrl}/register`, 'POST', userData);
-  const loginUser = () => fetchData(`${baseUrl}/login`, 'POST', loginData);
+  const registerUser = () => fetchData(`${baseUrl}/register`, "POST", userData);
+  const loginUser = () => fetchData(`${baseUrl}/login`, "POST", loginData);
 
   // Event management functions
   const fetchEvents = async () => {
@@ -86,62 +87,79 @@ const DemoEndpoint = () => {
   };
 
   const addEvent = async () => {
-    await fetchData(`${baseUrl}/events`, 'POST', eventData);
+    await fetchData(`${baseUrl}/events`, "POST", eventData);
     fetchEvents(); // Refresh the event list
   };
 
   const updateEvent = async () => {
     if (editingEvent) {
-      await fetchData(`${baseUrl}/events/${editingEvent.id}`, 'PUT', eventData);
+      await fetchData(`${baseUrl}/events/${editingEvent.id}`, "PUT", eventData);
       fetchEvents(); // Refresh the event list
       setEditingEvent(null); // Clear the editing state
     }
   };
 
   const deleteEvent = async (id) => {
-    await fetchData(`${baseUrl}/events/${id}`, 'DELETE');
+    await fetchData(`${baseUrl}/events/${id}`, "DELETE");
     fetchEvents(); // Refresh the event list
   };
 
   const handleEditClick = (event) => {
     setEditingEvent(event);
     setEventData(event); // Pre-fill form with event data
-    handleTabChange('manageEvent');
+    handleTabChange("manageEvent");
   };
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-gray-800 text-center mb-4">Demo Endpoint Requests</h1>
+      <h1 className="text-3xl font-bold text-gray-800 text-center mb-4">
+        Demo Endpoint Requests
+      </h1>
       <p className="text-lg text-gray-600 text-center mb-8">
-        Interact with the API endpoints using the buttons below. Input parameters if needed and view the response.
+        Interact with the API endpoints using the buttons below. Input
+        parameters if needed and view the response.
       </p>
 
       {/* Navigation Tabs */}
       <div className="flex justify-center mb-8">
         <button
-          onClick={() => handleTabChange('register')}
-          className={`px-4 py-2 font-semibold rounded-t-lg ${activeTab === 'register' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
+          onClick={() => handleTabChange("register")}
+          className={`px-4 py-2 font-semibold rounded-t-lg ${
+            activeTab === "register"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-gray-700"
+          }`}
         >
           Register User
         </button>
         <button
-          onClick={() => handleTabChange('login')}
-          className={`px-4 py-2 font-semibold rounded-t-lg ${activeTab === 'login' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
+          onClick={() => handleTabChange("login")}
+          className={`px-4 py-2 font-semibold rounded-t-lg ${
+            activeTab === "login"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-gray-700"
+          }`}
         >
           Login User
         </button>
         <button
-          onClick={() => handleTabChange('manageEvent')}
-          className={`px-4 py-2 font-semibold rounded-t-lg ${activeTab === 'manageEvent' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
+          onClick={() => handleTabChange("manageEvent")}
+          className={`px-4 py-2 font-semibold rounded-t-lg ${
+            activeTab === "manageEvent"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-gray-700"
+          }`}
         >
           Manage Events
         </button>
       </div>
 
       {/* Content based on Active Tab */}
-      {activeTab === 'register' && (
+      {activeTab === "register" && (
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">User Registration Data:</h2>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+            User Registration Data:
+          </h2>
           <input
             type="text"
             name="fullname"
@@ -174,15 +192,23 @@ const DemoEndpoint = () => {
             placeholder="Phone Number"
             className="mb-2 p-2 border rounded w-full"
           />
-          <button onClick={registerUser} className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={loading}>
+          <button
+            onClick={registerUser}
+            className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+          >
             Register User
           </button>
         </div>
       )}
 
-      {activeTab === 'login' && (
+      {activeTab === "login" && (
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">User Login Data:</h2>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+            User Login Data:
+          </h2>
           <input
             type="text"
             name="phoneNumber"
@@ -199,15 +225,23 @@ const DemoEndpoint = () => {
             placeholder="Password"
             className="mb-2 p-2 border rounded w-full"
           />
-          <button onClick={loginUser} className={`bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={loading}>
+          <button
+            onClick={loginUser}
+            className={`bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+          >
             Login User
           </button>
         </div>
       )}
 
-      {activeTab === 'manageEvent' && (
+      {activeTab === "manageEvent" && (
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">Event Data:</h2>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+            Event Data:
+          </h2>
           <input
             type="text"
             name="title"
@@ -257,11 +291,23 @@ const DemoEndpoint = () => {
           />
 
           <div className="flex justify-between mt-4">
-            <button onClick={addEvent} className={`bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={loading}>
+            <button
+              onClick={addEvent}
+              className={`bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={loading}
+            >
               Add Event
             </button>
             {editingEvent && (
-              <button onClick={updateEvent} className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={loading}>
+              <button
+                onClick={updateEvent}
+                className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
                 Update Event
               </button>
             )}
@@ -269,7 +315,9 @@ const DemoEndpoint = () => {
 
           {/* Event List Table */}
           <div className="mt-8">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Events List:</h2>
+            <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+              Events List:
+            </h2>
             <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
               <thead>
                 <tr>
@@ -280,7 +328,7 @@ const DemoEndpoint = () => {
                 </tr>
               </thead>
               <tbody>
-                {events.map(event => (
+                {events.map((event) => (
                   <tr key={event.id}>
                     <td className="py-2 px-4 border-b">{event.title}</td>
                     <td className="py-2 px-4 border-b">{event.date}</td>
@@ -312,13 +360,16 @@ const DemoEndpoint = () => {
       {error && <p className="text-center text-red-600">{error}</p>}
       {response && (
         <div className="mt-8 p-4 bg-white rounded shadow-md">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">Response:</h2>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+            Response:
+          </h2>
           <div className="overflow-x-auto max-w-full">
-            <pre className="text-gray-800 whitespace-pre-wrap">{JSON.stringify(response, null, 2)}</pre>
+            <pre className="text-gray-800 whitespace-pre-wrap">
+              {JSON.stringify(response, null, 2)}
+            </pre>
           </div>
         </div>
       )}
-
     </div>
   );
 };
