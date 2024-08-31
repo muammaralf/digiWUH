@@ -12,7 +12,7 @@ import {toast} from "react-toastify";
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const {user, setUser} = useUserStore()
+  const {user, fetch, setAccessToken} = useUserStore()
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -41,8 +41,9 @@ const SignIn = () => {
         return
       }
 
-      setUser(data.data.user)
-      console.log(data.data.user)
+      setAccessToken(data.data.session.accessToken)
+
+      fetch()
       navigate('/home')
     } catch (e) {
       console.log(e)

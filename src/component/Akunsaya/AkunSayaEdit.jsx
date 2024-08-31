@@ -10,6 +10,7 @@ const AkunSayaEdit = (props) => {
           type="text"
           className="text-lg font-medium border-2 rounded-md px-1 shadow-inner grow"
           value={props.isi}
+          onChange={(e) => props.onChange?.(e.target.value)}
         />
         <FaEdit className=" flex-none h-6 w-6 my-auto" />
       </div>
