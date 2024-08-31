@@ -59,7 +59,7 @@ const ArtikelPage = () => {
             <div id="artikelText" className=" flex flex-col w-full ">
               <h1
                 id="judulArtikel"
-                className="mx-auto mt-2 text-xl font-semibold text-[#50B478]"
+                className="mx-3 mt-2 text-xl font-semibold text-[#50B478]"
               >
                 {article.title}
               </h1>
