@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import keranjang from "../../assets/icons/line/Keranjang.svg";
+import home from "../../assets/icons/line/Home.svg";
+import profil from "../../assets/icons/line/Profil.svg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -44,17 +47,28 @@ const Navbar = () => {
             <div className="w-20 flex justify-center items-center m-auto h-20 rounded-full group-hover:shadow-md group-active:shadow-md group-focus:shadow-md bg-[#e1f5fb] group-hover:bg-[#3f915c] group-active:bg-[#50B478] group-focus:bg-[#50B478] transition ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="absolute -mt-1 group-hover:fill-[#ffffff] group-active:fill-[#ffffff] group-focus:fill-[#ffffff] transition"
+              >
+                <g id="Layer_5" data-name="Layer 5">
+                  <path d="M29.28,10.31a3.1,3.1,0,0,0-2.34-1.08H21.47L24.64,6.5a1,1,0,0,0,.1-1.42A1,1,0,0,0,23.33,5L18.41,9.23H5.16a3.06,3.06,0,0,0-3,3.69L4.35,23.21a6.16,6.16,0,0,0,6,4.88H22.19A6.13,6.13,0,0,0,28.25,23L30,12.8A3.08,3.08,0,0,0,29.28,10.31ZM4.34,11.62a1,1,0,0,1,.82-.39H16.1l-.75.65a1,1,0,0,0-.1,1.41,1,1,0,0,0,1.41.1l2.5-2.16h7.78a1.06,1.06,0,0,1,1,1.24l-.29,1.73H4.48l-.35-1.69A1.05,1.05,0,0,1,4.34,11.62ZM22.19,26.09H10.36A4.17,4.17,0,0,1,6.3,22.8L4.91,16.2H27.36l-1.09,6.43A4.13,4.13,0,0,1,22.19,26.09Z" />
+                  <path d="M11.28,17.84a1,1,0,0,0-1,1v3.87a1,1,0,0,0,2,0V18.84A1,1,0,0,0,11.28,17.84Z" />
+                  <path d="M20.93,17.84a1,1,0,0,0-1,1v3.87a1,1,0,0,0,2,0V18.84A1,1,0,0,0,20.93,17.84Z" />
+                  <path d="M16,17.84a1,1,0,0,0-1,1v3.87a1,1,0,0,0,2,0V18.84A1,1,0,0,0,16,17.84Z" />
+                </g>
+              </svg>
+              {/* <svg
+                xmlns="http://www.w3.org/2000/svg"
                 height="40px"
                 viewBox="0 -960 960 960"
                 width="40px"
                 fill="#3d3d3d"
-                className="absolute -mt-1"
               >
                 <path
                   className="group-hover:fill-[#ffffff] group-active:fill-[#ffffff] group-focus:fill-[#ffffff] transition"
                   d="M226.67-80q-27 0-46.84-19.83Q160-119.67 160-146.67v-506.66q0-27 19.83-46.84Q199.67-720 226.67-720h100v-6.67q0-64 44.66-108.66Q416-880 480-880t108.67 44.67q44.66 44.66 44.66 108.66v6.67h100q27 0 46.84 19.83Q800-680.33 800-653.33v506.66q0 27-19.83 46.84Q760.33-80 733.33-80H226.67Zm0-66.67h506.66v-506.66h-100v86.66q0 14.17-9.61 23.75-9.62 9.59-23.84 9.59-14.21 0-23.71-9.59-9.5-9.58-9.5-23.75v-86.66H393.33v86.66q0 14.17-9.61 23.75-9.62 9.59-23.84 9.59-14.21 0-23.71-9.59-9.5-9.58-9.5-23.75v-86.66h-100v506.66ZM393.33-720h173.34v-6.67q0-36.33-25.17-61.5-25.17-25.16-61.5-25.16t-61.5 25.16q-25.17 25.17-25.17 61.5v6.67ZM226.67-146.67v-506.66 506.66Z"
                 />
-              </svg>
+              </svg> */}
             </div>
           </div>
         </button>
