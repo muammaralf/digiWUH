@@ -1,31 +1,29 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Biopori2 from "../../assets/img/Biopori2.png";
 import HijabGirl from "../../assets/img/HijabGirl.svg";
 import BackButton from "../../component/BackButton";
 import { artikel } from "../../data/Artikeldata";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import instance from "../../services/axios/instance.js";
 import dayjs from "dayjs";
 
 const ArtikelPage = () => {
-  const params = useParams()
-  const [article, setArticle] = useState()
+  const params = useParams();
+  const [article, setArticle] = useState();
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     try {
-      const { data } = await instance.get('/articles/' + params.id)
+      const { data } = await instance.get("/articles/" + params.id);
 
-      setArticle(data.data)
+      setArticle(data.data);
     } catch (e) {
-
     } finally {
-
     }
-  }
+  };
 
   return (
     <>
@@ -78,7 +76,9 @@ const ArtikelPage = () => {
                 </div>
                 <div id="namaWriter" className="ml-2 grow">
                   <p className="">{article.author}</p>
-                  <p className="">{dayjs(article.date).format('dddd, D MMMM YYYY')}</p>
+                  <p className="">
+                    {dayjs(article.date).format("dddd, D MMMM YYYY")}
+                  </p>
                 </div>
                 <div id="likeArtiker" className="my-auto h-10 w-10 flex-none">
                   <svg
@@ -92,8 +92,11 @@ const ArtikelPage = () => {
                   </svg>
                 </div>
               </div>
-              <div id="artikelIsi" className="p-6" dangerouslySetInnerHTML={{ __html: article.content}}>
-              </div>
+              <div
+                id="artikelIsi"
+                className="p-6 text-justify bg-white indent-8"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              ></div>
             </div>
           </div>
         )}

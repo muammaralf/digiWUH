@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import keranjang from "../../assets/icons/line/Keranjang.svg";
-import home from "../../assets/icons/line/Home.svg";
-import profil from "../../assets/icons/line/Profil.svg";
+// import keranjang from "../../assets/icons/line/Keranjang.svg";
+// import home from "../../assets/icons/line/Home.svg";
+// import profil from "../../assets/icons/line/Profil.svg";
 
 const Navbar = () => {
   const navigate = useNavigate();

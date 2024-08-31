@@ -18,7 +18,9 @@ const Edukasi = (props) => {
                 ? `w-12 h-12 ${bgicon} rounded-full`
                 : "w-12 h-12 bg-lime-700 rounded-full"
             }
-          ></div>
+          >
+            <img src={icon} alt="" />
+          </div>
           <p className="text-white font-reguler text-sm mt-2">
             {nameEdukasi ? nameEdukasi : "Segera Hadir"}
           </p>

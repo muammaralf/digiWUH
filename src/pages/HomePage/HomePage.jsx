@@ -1,47 +1,41 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import digiwuhLogo from "../../assets/img/digiwuhLogo.svg";
 import profilFoto from "../../assets/img/ProfilFoto.svg";
 import JadwalSetor from "../../component/JadwalSetor/JadwalSetor";
 import Edukasi from "../../component/Edukasi/Edukasi";
 import { edukasi } from "../../data/Edukasi";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUserStore from "../../store/user.store";
 import ArtikelListHome from "../ArtikelList/ArtikelListHome.jsx";
 import instance from "../../services/axios/instance.js";
 
-const scheduleColors = [
-  'bg-pink-600',
-  'bg-green-500',
-  'bg-yellow-500',
-]
+const scheduleColors = ["bg-pink-600", "bg-green-500", "bg-yellow-500"];
 
 const HomePage = ({ children }) => {
   const navigate = useNavigate();
 
-  const [schedules, setSchedules] = useState([])
+  const [schedules, setSchedules] = useState([]);
 
-  const {user} = useUserStore()
+  const { user } = useUserStore();
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     try {
-      const {data} = await instance.get('/schedules', {
+      const { data } = await instance.get("/schedules", {
         params: {
           perPage: 9999,
           page: 1,
-        }
-      })
+        },
+      });
 
-      setSchedules(data.data)
+      setSchedules(data.data);
     } catch (e) {
-
     } finally {
-
     }
-  }
+  };
 
   return (
     <>
@@ -73,7 +67,9 @@ const HomePage = ({ children }) => {
         >
           <div className="flex justify-between mt-2 w-full">
             <div className="my-auto">
-              <p className="font-semibold text-xl">Halo, {user?.userMetadata.fullname}!</p>
+              <p className="font-semibold text-xl">
+                Halo, {user?.userMetadata.fullname}!
+              </p>
               <p>Selamat datang di Digiwuh!</p>
             </div>
             <div className="h-20 flex items-center">
@@ -128,7 +124,7 @@ const HomePage = ({ children }) => {
                 Selengkapnya
               </Link>
             </div>
-            <ArtikelListHome/>
+            <ArtikelListHome />
           </div>
         </div>
         <div id="bottomSpace" className="h-36"></div>
